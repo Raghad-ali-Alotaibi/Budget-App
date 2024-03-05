@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+* {
+  font-family: "Lilita One";
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #b5c0d0;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* start header */
+header {
+  padding: 10px 20px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #2e3f58;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+img {
+  width: 70px;
+  height: auto;
+}
+/* end header */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  place-items: center;
+  margin: 30px;
+  padding: 20px;
+  align-items: center;
+}
+input {
+  width: 80%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #e3e7ee;
+  border-radius: 25px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+label {
+  font-size: 1.2rem;
+  color: #27374d;
+}
+p {
+  font-size: 1.2rem;
+  color: #27374d;
+}
+button {
+  padding: 12px 12px;
+  margin-bottom: 10px;
+  background-color: #456087;
   color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
 }
-
-.App-link {
-  color: #61dafb;
+button:hover {
+  color: black;
+  opacity: 0.6;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.amount{
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
