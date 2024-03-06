@@ -24,7 +24,7 @@ img {
 }
 /* end header */
 
-/*  */
+/* start container  */
 .container {
   display: grid;
   grid-template-columns: repeat(3, auto);
@@ -40,7 +40,7 @@ img {
   border-radius: 30px;
 }
 input {
-  width: 80%;
+  width: 90%;
   padding: 10px;
   border: none;
   outline: none;
@@ -79,11 +79,6 @@ button:hover {
   color: black;
   opacity: 0.9;
 }
-.amount {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
 .custom-counter {
   font-size:1.2rem ;
   margin: 10px;
@@ -107,6 +102,17 @@ button:hover {
   padding: 3px 8px;
   border-radius: 3px;
 }
+/* end  container */
+
+/* start Transfer */
+.amount {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+/* end Transfer */
+
+
 
 
 

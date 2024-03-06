@@ -21,7 +21,6 @@ const Transfer = (props: TransferSavingAmount) => {
     <div className="amount">
       <form onSubmit={handleSubmit}>
         <p>Current balance: {props.totalIncomeAmount - props.totalExpensesAmount}</p>
-        {/* target */}
         <label>Transfer to saving account</label>
         <input
           type="number"

@@ -14,10 +14,12 @@ type IncomeProps = {
 };
 
 const Income = (props: IncomeProps) => {
-  const [source, setSource] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [date, setDate] = useState("");
-  const [incomes, setIncome] = useState<IncomeType[]>([]);
+  const [income, setIncome] = useState({
+    source: "",
+    amount: 0,
+    date: "",
+  });
+  const [incomes, setIncomes] = useState<IncomeType[]>([]);
 
   // total Amount
   const totalAmount = incomes.reduce(
@@ -26,33 +28,26 @@ const Income = (props: IncomeProps) => {
   );
   props.onGetTotalIncomeAmount(totalAmount);
 
-  const handleSource = (event: ChangeEvent<HTMLInputElement>) => {
-    setSource(event.target.value);
-  };
-
-  const handleAmount = (event: ChangeEvent<HTMLInputElement>) => {
-    setAmount(Number(event.target.value));
-  };
-
-  const handleDate = (event: ChangeEvent<HTMLInputElement>) => {
-    setDate(event.target.value);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setIncome((prevIncome) => {
+      return { ...prevIncome, [event.target.name]: event.target.value };
+    });
   };
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const income = {
+    const newIncome = {
       id: uuidv4(),
-      source: source,
-      amount: amount,
-      date: date,
+      ...income,
     };
-    setIncome((prevIncome) => [...prevIncome, income]);
-    // rest state
-    setSource("");
-    setAmount(0);
-    setDate("");
+    setIncomes((prevIncome) => [...prevIncome, newIncome]);
+     // rest state
+     setIncome({
+      source: "",
+      amount: 0,
+      date: "",
+    });
   };
-
   return (
     <div className="container-form">
       <form onSubmit={handleSubmit}>
@@ -63,9 +58,9 @@ const Income = (props: IncomeProps) => {
             type="text"
             name="source"
             id="source"
-            value={source}
+            value={income.source}
             placeholder="salary"
-            onChange={handleSource}
+            onChange={handleChange}
             required
           ></input>
         </div>
@@ -77,8 +72,8 @@ const Income = (props: IncomeProps) => {
             type="number"
             name="amount"
             id="amount"
-            onChange={handleAmount}
-            value={amount}
+            value={income.amount}
+            onChange={handleChange}
             required
           ></input>
         </div>
@@ -90,8 +85,8 @@ const Income = (props: IncomeProps) => {
             type="date"
             name="date"
             id="date"
-            value={date}
-            onChange={handleDate}
+            value={income.date}
+            onChange={handleChange}
             required
           ></input>
         </div>

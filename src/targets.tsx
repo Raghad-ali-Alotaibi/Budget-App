@@ -2,17 +2,19 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 
 const Target = (props: { SavingAmount: number }) => {
   const [target, setTarget] = useState(0);
+  const [targetBeforeReset, setTargetBeforeReset] = useState(0);
 
   const handleTarget = (event: ChangeEvent<HTMLInputElement>) => {
     setTarget(Number(event.target.value));
   };
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    setTarget((prevTarget) => {
-      return prevTarget;
-    });
+    setTarget(targetBeforeReset);
+    setTargetBeforeReset(0);
   };
-
+  // const SavingsCalculator = () => {
+  //   const savingPercentage = (props.SavingAmount / target) * 100;
+  //   }
   return (
     <div className="container-form">
       <form onSubmit={handleSubmit}>
@@ -30,10 +32,14 @@ const Target = (props: { SavingAmount: number }) => {
       </form>
       <p>Current saving: {props.SavingAmount} </p>
       <p>Target: {target}</p>
-      <p> progress: % </p>
+      <p> progress:  % 
+      {/* progress: {savingPercentage} % */}</p>
       <progress max={5000} value={2000} />
     </div>
   );
 };
 
 export default Target;
+
+
+
