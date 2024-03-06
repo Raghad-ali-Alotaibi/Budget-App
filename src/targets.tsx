@@ -11,7 +11,6 @@ const Target = (props: { SavingAmount: number }) => {
     setTarget((prevTarget) => {
       return prevTarget;
     });
-
   };
 
   return (
@@ -31,9 +30,8 @@ const Target = (props: { SavingAmount: number }) => {
       </form>
       <p>Current saving: {props.SavingAmount} </p>
       <p>Target: {target}</p>
-      <p className="c"> progress:  
-        <progress max={5000} value={2000} />
-      </p>
+      <p> progress: % </p>
+      <progress max={5000} value={2000} />
     </div>
   );
 };

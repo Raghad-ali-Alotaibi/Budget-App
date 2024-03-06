@@ -55,16 +55,14 @@ label {
   color: #2d415d;
 }
 p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #2d415d;
   margin-bottom: 20px;
 }
-.progress{
-  font-size: 1.2rem;
+progress{
   color: #2d415d;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+  padding: 15px;
+} 
 button {
   padding: 12px 12px;
   margin-bottom: 10px;
@@ -87,6 +85,7 @@ button:hover {
   text-align: center;
 }
 .custom-counter {
+  font-size:1.2rem ;
   margin: 10px;
   padding: 10px;
   list-style-type: none;
