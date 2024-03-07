@@ -33,9 +33,9 @@ img {
 }
 .container-form {
   padding: 10px;
-  width: 70%;
-  overflow: auto;
-  padding: 50px 30px 80px;
+  width: 78%;
+  overflow-y: auto;
+  padding: 40px 30px 80px;
   background: #ffffff;
   border-radius: 30px;
 }
@@ -59,10 +59,10 @@ p {
   color: #2d415d;
   margin-bottom: 20px;
 }
-progress{
+progress {
   color: #2d415d;
   padding: 15px;
-} 
+}
 button {
   padding: 12px 12px;
   margin-bottom: 10px;
@@ -80,27 +80,38 @@ button:hover {
   opacity: 0.9;
 }
 .custom-counter {
-  font-size:1.2rem ;
+  font-size: 1rem;
   margin: 10px;
   padding: 10px;
   list-style-type: none;
-  color: #c25648;
+  color: #414f60;
 }
 .custom-counter li {
   counter-increment: step-counter;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  padding: 10px;
+  margin-bottom: 0;
+  padding: 5px;
 }
 .custom-counter li::before {
   content: counter(step-counter);
   margin-right: 5px;
   font-size: 80%;
-  background-color: #EEC759;
+  background-color: #eec759;
   color: white;
   font-weight: bold;
   padding: 3px 8px;
   border-radius: 3px;
+}
+.delete {
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  color: #c25648;
+  background: none;
+  cursor: pointer;
+}
+.delete:hover {
+  opacity: 0.6;
+  color: #c25648;
 }
 /* end  container */
 
@@ -111,8 +122,3 @@ button:hover {
   text-align: center;
 }
 /* end Transfer */
-
-
-
-
-

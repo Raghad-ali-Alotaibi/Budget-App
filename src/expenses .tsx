@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 type ExpensesType = {
-  id?: string;
+  id: string;
   source: string;
   amount: number;
   date: string;
@@ -46,6 +46,12 @@ const Expenses = (props: ExpensesProps) => {
       amount: 0,
       date: "",
     });
+  };
+
+  // function delete expense
+  const deleteExpense = (id: string) => {
+    const filteredExpenses = expenses.filter((expense) => expense.id !== id);
+    setExpenses(filteredExpenses);
   };
 
   return (
@@ -97,6 +103,12 @@ const Expenses = (props: ExpensesProps) => {
           return (
             <li key={expense.id}>
               {expense.source}: {expense.amount} EUR on {expense.date}
+              <button
+                className="delete"
+                onClick={() => deleteExpense(expense.id)}
+              >
+                delete
+              </button>
             </li>
           );
         })}

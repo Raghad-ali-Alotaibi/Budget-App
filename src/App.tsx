@@ -12,14 +12,13 @@ function App() {
   const [totalIncomeAmount, setTotalIncomeAmount] = useState(0);
   const [totalExpensesAmount, setTotalExpensesAmount] = useState(0);
 
-
-  const getSavingAmount = (amount: number)=>{
+  const getSavingAmount = (amount: number) => {
     setSavingAmount(amount);
   };
-  const getTotalIncomeAmount = (amount: number)=>{
+  const getTotalIncomeAmount = (amount: number) => {
     setTotalIncomeAmount(amount);
   };
-  const getTotalExpensesAmount = (amount: number)=>{
+  const getTotalExpensesAmount = (amount: number) => {
     setTotalExpensesAmount(amount);
   };
 
@@ -27,15 +26,15 @@ function App() {
     <div>
       <Header />
       <main className="container">
-        <Income onGetTotalIncomeAmount ={getTotalIncomeAmount}/>
-        <Expenses onGetTotalExpensesAmount ={getTotalExpensesAmount} />
+        <Income onGetTotalIncomeAmount={getTotalIncomeAmount} />
+        <Expenses onGetTotalExpensesAmount={getTotalExpensesAmount} />
         <Target SavingAmount={SavingAmount} />
       </main>
-      <Transfer 
-      onGetSavingAmount={getSavingAmount}
-       totalIncomeAmount ={totalIncomeAmount}
-       totalExpensesAmount ={totalExpensesAmount}
-       />
+      <Transfer
+        onGetSavingAmount={getSavingAmount}
+        totalIncomeAmount={totalIncomeAmount}
+        totalExpensesAmount={totalExpensesAmount}
+      />
     </div>
   );
 }

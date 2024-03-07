@@ -3,7 +3,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 type IncomeType = {
-  id?: string;
+  id: string;
   source: string;
   amount: number;
   date: string;
@@ -41,13 +41,20 @@ const Income = (props: IncomeProps) => {
       ...income,
     };
     setIncomes((prevIncome) => [...prevIncome, newIncome]);
-     // rest state
-     setIncome({
+    // rest state
+    setIncome({
       source: "",
       amount: 0,
       date: "",
     });
   };
+
+  // function delete Income
+  const deleteIncome = (id: string) => {
+    const filteredExpenses = incomes.filter((income) => income.id !== id);
+    setIncomes(filteredExpenses);
+  };
+
   return (
     <div className="container-form">
       <form onSubmit={handleSubmit}>
@@ -97,6 +104,12 @@ const Income = (props: IncomeProps) => {
           return (
             <li key={income.id}>
               {income.source}: {income.amount} EUR on {income.date}
+              <button
+                className="delete"
+                onClick={() => deleteIncome(income.id)}
+              >
+                delete
+              </button>
             </li>
           );
         })}

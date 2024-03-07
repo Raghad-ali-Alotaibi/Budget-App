@@ -30,7 +30,13 @@ const Target = (props: { SavingAmount: number }) => {
       </form>
       <p>Current saving: {props.SavingAmount} </p>
       <p>Target: {target}</p>
-      <p> progress: {target?Math.round((props.SavingAmount / target) * 100) : 0} % </p>
+      <p>
+        {" "}
+        progress: {target
+          ? Math.round((props.SavingAmount / target) * 100)
+          : 0}{" "}
+        %{" "}
+      </p>
       <progress
         max={100}
         value={Math.round((props.SavingAmount / target) * 100)}

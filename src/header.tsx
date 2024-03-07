@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Header = () => {
   return (
     <header>
@@ -8,6 +7,5 @@ const Header = () => {
       <img src="/public/images/accounting.png" alt="My Logo" />
     </header>
   );
-}
+};
 export default Header;
-
