@@ -1,5 +1,5 @@
 import { type } from "os";
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 type IncomeType = {
@@ -26,7 +26,9 @@ const Income = (props: IncomeProps) => {
     (total, currentValue) => total + currentValue.amount,
     0
   );
-  props.onGetTotalIncomeAmount(totalAmount);
+  useEffect(() => {
+    props.onGetTotalIncomeAmount(totalAmount);
+  }, [incomes, totalAmount, props]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setIncome((prevIncome) => {

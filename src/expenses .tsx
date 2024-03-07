@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 type ExpensesType = {
@@ -24,7 +24,9 @@ const Expenses = (props: ExpensesProps) => {
     (total, currentValue) => total + currentValue.amount,
     0
   );
-  props.onGetTotalExpensesAmount(totalAmount);
+  useEffect(() => {
+    props.onGetTotalExpensesAmount(totalAmount);
+  }, [expenses, totalAmount, props]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setExpense((prevExpenses) => {
