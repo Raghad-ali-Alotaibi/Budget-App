@@ -12,9 +12,7 @@ const Target = (props: { SavingAmount: number }) => {
     setTarget(targetBeforeReset);
     setTargetBeforeReset(0);
   };
-  // const SavingsCalculator = () => {
-  //   const savingPercentage = (props.SavingAmount / target) * 100;
-  //   }
+
   return (
     <div className="container-form">
       <form onSubmit={handleSubmit}>
@@ -32,14 +30,13 @@ const Target = (props: { SavingAmount: number }) => {
       </form>
       <p>Current saving: {props.SavingAmount} </p>
       <p>Target: {target}</p>
-      <p> progress:  % 
-      {/* progress: {savingPercentage} % */}</p>
-      <progress max={5000} value={2000} />
+      <p> progress: {target?Math.round((props.SavingAmount / target) * 100) : 0} % </p>
+      <progress
+        max={100}
+        value={Math.round((props.SavingAmount / target) * 100)}
+      />
     </div>
   );
 };
 
 export default Target;
-
-
-

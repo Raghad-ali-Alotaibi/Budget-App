@@ -1,12 +1,14 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 
-type TransferSavingAmount = { onGetSavingAmount: (amount: number) => void;
-  totalIncomeAmount:number;
-  totalExpensesAmount:number;
+type TransferSavingAmount = {
+  onGetSavingAmount: (amount: number) => void;
+  totalIncomeAmount: number;
+  totalExpensesAmount: number;
 };
 
 const Transfer = (props: TransferSavingAmount) => {
   const [amount, setAmount] = useState(0);
+  let [totalSaving, setTotalSaving] = useState(0);
 
   const handleTransfer = (event: ChangeEvent<HTMLInputElement>) => {
     setAmount(Number(event.target.value));
@@ -14,13 +16,23 @@ const Transfer = (props: TransferSavingAmount) => {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    props.onGetSavingAmount(amount);
+    if (amount) {
+      totalSaving = totalSaving + amount;
+      setTotalSaving(totalSaving);
+      props.onGetSavingAmount(amount);
+      setAmount(0);
+    } else {
+      console.log("something wrong with Transfer Saving Amount!!");
+    }
   };
 
   return (
     <div className="amount">
       <form onSubmit={handleSubmit}>
-        <p>Current balance: {props.totalIncomeAmount - props.totalExpensesAmount}</p>
+        <p>
+          Current balance:{" "}
+          {props.totalIncomeAmount - (props.totalExpensesAmount + totalSaving)}
+        </p>
         <label>Transfer to saving account</label>
         <input
           type="number"
