@@ -21,7 +21,7 @@ const Expenses = (props: ExpensesProps) => {
 
   // total Amount
   const totalAmount = expenses.reduce(
-    (total, currentValue) => total + currentValue.amount,
+    (total, currentValue) => total + Number(currentValue.amount),
     0
   );
   useEffect(() => {
@@ -52,7 +52,9 @@ const Expenses = (props: ExpensesProps) => {
 
   // function delete expense
   const deleteExpense = (id: string) => {
-    const filteredExpenses = expenses.filter((expense) => expense.id !== id);
+    const filteredExpenses = expenses.filter((income) => {
+      return income.id !== id;
+    });
     setExpenses(filteredExpenses);
   };
 

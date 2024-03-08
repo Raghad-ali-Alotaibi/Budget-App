@@ -19,7 +19,7 @@ const Transfer = (props: TransferSavingAmount) => {
     if (amount) {
       totalSaving = totalSaving + amount;
       setTotalSaving(totalSaving);
-      props.onGetSavingAmount(amount);
+      props.onGetSavingAmount(totalSaving);
       setAmount(0);
     } else {
       console.log("something wrong with Transfer Saving Amount!!");
@@ -30,12 +30,12 @@ const Transfer = (props: TransferSavingAmount) => {
     <div className="amount">
       <form onSubmit={handleSubmit}>
         <p>
-          Current balance:{" "}
+          Current balance:
           {props.totalIncomeAmount - (props.totalExpensesAmount + totalSaving)}
         </p>
         <label>Transfer to saving account</label>
         <input
-          type="number"
+          type="amount"
           name="transfer"
           id="transfer"
           value={amount}

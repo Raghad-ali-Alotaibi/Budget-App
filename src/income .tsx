@@ -1,4 +1,4 @@
-import { type } from "os";
+// import { type } from "os";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -20,10 +20,11 @@ const Income = (props: IncomeProps) => {
     date: "",
   });
   const [incomes, setIncomes] = useState<IncomeType[]>([]);
+  console.log(incomes)
 
   // total Amount
   const totalAmount = incomes.reduce(
-    (total, currentValue) => total + currentValue.amount,
+    (total, currentValue) => total + Number(currentValue.amount),
     0
   );
   useEffect(() => {
@@ -53,8 +54,10 @@ const Income = (props: IncomeProps) => {
 
   // function delete Income
   const deleteIncome = (id: string) => {
-    const filteredExpenses = incomes.filter((income) => income.id !== id);
-    setIncomes(filteredExpenses);
+    const filteredIncome = incomes.filter((income) => {
+      return income.id !== id;
+    });
+    setIncomes(filteredIncome);
   };
 
   return (
