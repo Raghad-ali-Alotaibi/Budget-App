@@ -1,4 +1,3 @@
-// import { type } from "os";
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -20,7 +19,6 @@ const Income = (props: IncomeProps) => {
     date: "",
   });
   const [incomes, setIncomes] = useState<IncomeType[]>([]);
-  console.log(incomes)
 
   // total Amount
   const totalAmount = incomes.reduce(

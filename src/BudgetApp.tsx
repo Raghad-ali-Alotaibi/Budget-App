@@ -1,13 +1,13 @@
 import React from "react";
-import Header from "./header";
-import Income from "./income ";
-import Expenses from "./expenses ";
-import Target from "./targets";
-import Transfer from "./transfer";
+import Header from "./Header";
+import Income from "./components/Income ";
+import Expenses from "./components/Expenses ";
+import Target from "./components/Targets";
+import Transfer from "./components/Transfer";
 import "./App.css";
 import { useState } from "react";
 
-function App() {
+function BudgetApp() {
   const [SavingAmount, setSavingAmount] = useState(0);
   const [totalIncomeAmount, setTotalIncomeAmount] = useState(0);
   const [totalExpensesAmount, setTotalExpensesAmount] = useState(0);
@@ -39,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default BudgetApp;
