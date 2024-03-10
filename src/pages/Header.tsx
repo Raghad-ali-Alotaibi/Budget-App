@@ -1,16 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import {Link } from "react-router-dom";
 
 const Header = () => {
-  // const navigate = useNavigate();
   return (
     <header>
-      {/* <nav>
-        <link to ="/"> Home</link>
-        <link to ="/BudgetApp"> Budget App</link>
-      </nav> */}
       <h1>Budgetary Management</h1>
       <img src="/public/images/accounting.png" alt="My Logo" />
+      <nav>
+        <Link to ="/">Home</Link>
+        <Link to ="/budget-app">Budget App</Link>
+    </nav>
     </header>
   );
 };

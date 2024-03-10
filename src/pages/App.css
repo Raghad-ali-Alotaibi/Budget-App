@@ -22,6 +22,36 @@ img {
   width: 70px;
   height: auto;
 }
+/* nav {
+  align-items: center;
+  display: inline-block;
+  justify-content: space-between;
+}
+nav  {
+  display: inline-block;
+  list-style: none;
+  margin: 1px 10px;
+}
+nav  {
+  color: #3b3a3a;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+}
+nav ::after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background: #ffb740;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+nav :hover::after {
+  width: 100%;
+} */
+
 /* end header */
 
 /* start container  */
@@ -122,3 +152,36 @@ button:hover {
   text-align: center;
 }
 /* end Transfer */
+
+/* home page start */
+.hero {
+  display: inline-block;
+  align-items: center;
+  text-align: center;
+  font-family: "Lilita One";
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+.text__title {
+  color: #2e3f58;
+  font-size: 2.5rem;
+  margin: 50px; 
+}
+.hero__button {
+  border: none;
+  border-radius: 40px;
+  outline: 0;
+  padding: 20px 25px;
+  color: #253346;
+  background-color: #d1d0d0;
+  text-align: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.hero__button:hover {
+  background-color: #eec759;
+  color: #fdfdfd;
+}
