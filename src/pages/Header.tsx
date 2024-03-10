@@ -1,15 +1,21 @@
 import React from "react";
-import {Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header>
-      <h1>Budgetary Management</h1>
-      <img src="/public/images/accounting.png" alt="My Logo" />
+      <p className="logo">Budgetary Management</p>
       <nav>
-        <Link to ="/">Home</Link>
-        <Link to ="/budget-app">Budget App</Link>
-    </nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to="/budget-app">Budget App</Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };

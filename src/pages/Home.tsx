@@ -9,6 +9,7 @@ const Home = () => {
 
   return (
     <div className="hero">
+      <h1>Welcome to Budgetary Management</h1>
       <h2 className="text__title">
         Effortlessly manage your finances with our intuitive budget app, Start
         budgeting smarter today 💰.

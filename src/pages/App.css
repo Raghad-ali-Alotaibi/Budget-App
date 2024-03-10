@@ -5,53 +5,52 @@ body {
   background-color: #b5c0d0;
 }
 /* start header */
+#header {
+  top: 0;
+  z-index: 100;
+}
 header {
-  padding: 10px 20px;
+  padding: 10px 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-h1 {
-  text-align: center;
-  font-size: 3rem;
-  color: #2e3f58;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-img {
-  width: 70px;
-  height: auto;
-}
-/* nav {
-  align-items: center;
-  display: inline-block;
   justify-content: space-between;
 }
-nav  {
+.logo {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #2e3f58;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  height: 12vh;
+}
+nav ul li {
   display: inline-block;
   list-style: none;
   margin: 1px 10px;
 }
-nav  {
-  color: #3b3a3a;
+nav ul li a {
+  color: #2e3f58;
   text-decoration: none;
   font-size: 18px;
   position: relative;
 }
-nav ::after {
+nav ul li a::after {
   content: "";
   width: 0;
   height: 3px;
-  background: #ffb740;
+  background: #c25648;
   position: absolute;
   left: 0;
   bottom: -6px;
   transition: 0.5s;
 }
-nav :hover::after {
+nav ul li a:hover::after {
   width: 100%;
-} */
-
+}
 /* end header */
 
 /* start container  */
@@ -164,9 +163,9 @@ button:hover {
   transform: translate(-50%, -50%);
   position: absolute;
 }
-.text__title {
+.text__title ,h1 {
   color: #2e3f58;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin: 50px; 
 }
 .hero__button {
@@ -177,7 +176,7 @@ button:hover {
   color: #253346;
   background-color: #d1d0d0;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 0.9rem;
   cursor: pointer;
   text-transform: uppercase;
 }
