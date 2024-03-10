@@ -12,7 +12,7 @@ function BudgetApp() {
   const [totalIncomeAmount, setTotalIncomeAmount] = useState(0);
   const [totalExpensesAmount, setTotalExpensesAmount] = useState(0);
 
-  const getSavingAmount = (amount: number) => {
+  const SavingAmount = (amount: number) => {
     setSavingAmount(amount);
   };
   const getTotalIncomeAmount = (amount: number) => {
@@ -30,7 +30,7 @@ function BudgetApp() {
         <Target SavingAmount={savingAmount} />
       </main>
       <Transfer
-        onGetSavingAmount={getSavingAmount}
+        onGetSavingAmount={SavingAmount}
         totalIncomeAmount={totalIncomeAmount}
         totalExpensesAmount={totalExpensesAmount}
       />
