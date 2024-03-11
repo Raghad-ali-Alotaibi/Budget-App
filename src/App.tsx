@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import BudgetApp from "./pages/BudgetApp";
 import Header from "./pages/Header";
+import "./App.css" ;
+
 
 
 const App = () => {

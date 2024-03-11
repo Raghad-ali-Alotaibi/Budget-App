@@ -4,7 +4,6 @@ import Income from "../components/Income ";
 import Expenses from "../components/Expenses ";
 import Target from "../components/Targets";
 import Transfer from "../components/Transfer";
-import "./App.css";
 import { useState } from "react";
 
 function BudgetApp() {
