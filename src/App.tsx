@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-import Home from "../pages/Home";
-import BudgetApp from "../pages/BudgetApp";
-import Header from "../pages/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import BudgetApp from "./pages/BudgetApp";
+import Header from "./pages/Header";
 
 
-const Index = () => {
+const App = () => {
   return (
     <div>
       <BrowserRouter>
@@ -18,4 +18,4 @@ const Index = () => {
     </div>
   );
 };
-export default Index;
+export default App;
