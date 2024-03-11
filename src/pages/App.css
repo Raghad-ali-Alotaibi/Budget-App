@@ -163,10 +163,11 @@ button:hover {
   transform: translate(-50%, -50%);
   position: absolute;
 }
-.text__title ,h1 {
+.text__title,
+h1 {
   color: #2e3f58;
   font-size: 1.5rem;
-  margin: 50px; 
+  margin: 50px;
 }
 .hero__button {
   border: none;
@@ -183,4 +184,11 @@ button:hover {
 .hero__button:hover {
   background-color: #eec759;
   color: #fdfdfd;
+}
+/* for errors */
+span {
+  color: #981313;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

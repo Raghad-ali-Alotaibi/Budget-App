@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 
-type IncomeType = {
+type IncomeSource = {
   id: string;
   source: string;
   amount: number;
@@ -13,12 +14,13 @@ type IncomeProps = {
 };
 
 const Income = (props: IncomeProps) => {
-  const [income, setIncome] = useState({
-    source: "",
-    amount: 0,
-    date: "",
-  });
-  const [incomes, setIncomes] = useState<IncomeType[]>([]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IncomeSource>();
+
+  const [incomes, setIncomes] = useState<IncomeSource[]>([]);
 
   // total Amount
   const totalAmount = incomes.reduce(
@@ -29,25 +31,12 @@ const Income = (props: IncomeProps) => {
     props.onGetTotalIncomeAmount(totalAmount);
   }, [incomes, totalAmount, props]);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIncome((prevIncome) => {
-      return { ...prevIncome, [event.target.name]: event.target.value };
-    });
-  };
-
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+  const incomeSubmit: SubmitHandler<IncomeSource> = (data) => {
     const newIncome = {
       id: uuidv4(),
-      ...income,
+      ...data,
     };
     setIncomes((prevIncome) => [...prevIncome, newIncome]);
-    // rest state
-    setIncome({
-      source: "",
-      amount: 0,
-      date: "",
-    });
   };
 
   // function delete Income
@@ -57,22 +46,19 @@ const Income = (props: IncomeProps) => {
     });
     setIncomes(filteredIncome);
   };
-
   return (
     <div className="container-form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(incomeSubmit)}>
         {/* Income */}
         <div>
           <label>Income source</label>
           <input
             type="text"
-            name="source"
-            id="source"
-            value={income.source}
+            id="income_source"
             placeholder="salary"
-            onChange={handleChange}
-            required
+            {...register("source", { required: "Salary is Required" })}
           ></input>
+          {errors.source && <span>{errors.source.message}</span>}
         </div>
 
         {/* Amount */}
@@ -80,12 +66,10 @@ const Income = (props: IncomeProps) => {
           <label>Amount of income</label>
           <input
             type="number"
-            name="amount"
             id="amount"
-            value={income.amount}
-            onChange={handleChange}
-            required
+            {...register("amount", { required: "Amount is Required" })}
           ></input>
+          {errors.amount && <span>{errors.amount.message}</span>}
         </div>
 
         {/* Date */}
@@ -93,12 +77,10 @@ const Income = (props: IncomeProps) => {
           <label>Date of income</label>
           <input
             type="date"
-            name="date"
             id="date"
-            value={income.date}
-            onChange={handleChange}
-            required
+            {...register("date", { required: "Date is Required" })}
           ></input>
+          {errors.date && <span>{errors.date.message}</span>}
         </div>
         <button>Add income</button>
       </form>

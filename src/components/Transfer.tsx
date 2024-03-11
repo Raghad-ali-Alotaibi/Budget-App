@@ -35,7 +35,7 @@ const Transfer = (props: TransferSavingAmount) => {
         </p>
         <label>Transfer to saving account</label>
         <input
-          type="amount"
+          type="number"
           name="transfer"
           id="transfer"
           value={amount}

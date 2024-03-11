@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 
-type ExpensesType = {
+type ExpenseSource = {
   id: string;
   source: string;
   amount: number;
@@ -12,12 +13,13 @@ type ExpensesProps = {
 };
 
 const Expenses = (props: ExpensesProps) => {
-  const [expense, setExpense] = useState({
-    source: "",
-    amount: 0,
-    date: "",
-  });
-  const [expenses, setExpenses] = useState<ExpensesType[]>([]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ExpenseSource>();
+ 
+  const [expenses, setExpenses] = useState<ExpenseSource[]>([]);
 
   // total Amount
   const totalAmount = expenses.reduce(
@@ -28,27 +30,15 @@ const Expenses = (props: ExpensesProps) => {
     props.onGetTotalExpensesAmount(totalAmount);
   }, [expenses, totalAmount, props]);
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setExpense((prevExpenses) => {
-      return { ...prevExpenses, [event.target.name]: event.target.value };
-    });
-  };
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-
+  const expenseSubmit: SubmitHandler<ExpenseSource> = (data) => {
     const newExpenses = {
       id: uuidv4(),
-      ...expense,
+      ...data,
     };
     setExpenses((prevExpenses) => [...prevExpenses, newExpenses]);
-    // rest state
-    setExpense({
-      source: "",
-      amount: 0,
-      date: "",
-    });
   };
+
 
   // function delete expense
   const deleteExpense = (id: string) => {
@@ -60,19 +50,17 @@ const Expenses = (props: ExpensesProps) => {
 
   return (
     <div className="container-form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(expenseSubmit)}>
         {/* Expenses */}
         <div>
           <label>Expenses source</label>
           <input
             type="text"
-            name="source"
-            id="source"
-            value={expense.source}
-            onChange={handleChange}
+            id="expense_source"
             placeholder="Electricity bill"
-            required
+            {...register("source", { required: "field is Required" })}
           ></input>
+          {errors.source && <span>{errors.source.message}</span>}
         </div>
 
         {/* Amount */}
@@ -80,12 +68,10 @@ const Expenses = (props: ExpensesProps) => {
           <label>Amount of expenses</label>
           <input
             type="number"
-            name="amount"
             id="amount"
-            value={expense.amount}
-            onChange={handleChange}
-            required
+            {...register("amount", { required: "Amount is Required" })}
           ></input>
+          {errors.amount && <span>{errors.amount.message}</span>}
         </div>
 
         {/* Date */}
@@ -93,12 +79,10 @@ const Expenses = (props: ExpensesProps) => {
           <label>Date of expenses</label>
           <input
             type="date"
-            name="date"
             id="date"
-            value={expense.date}
-            onChange={handleChange}
-            required
+            {...register("date", { required: "Date is Required" })}
           ></input>
+          {errors.date && <span>{errors.date.message}</span>}
         </div>
         <button>Add expenses</button>
       </form>
