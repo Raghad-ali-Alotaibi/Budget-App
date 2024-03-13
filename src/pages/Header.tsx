@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
-      <p className="logo">Budgetary Management</p>
+      <p className="logo">Budgetary Management💰</p>
       <nav>
         <ul>
           <li>

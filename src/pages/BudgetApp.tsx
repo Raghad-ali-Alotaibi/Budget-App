@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Header from "./Header";
 import Income from "../components/Income ";
 import Expenses from "../components/Expenses ";
@@ -11,15 +11,17 @@ function BudgetApp() {
   const [totalIncomeAmount, setTotalIncomeAmount] = useState(0);
   const [totalExpensesAmount, setTotalExpensesAmount] = useState(0);
 
-  const SavingAmount = (amount: number) => {
+  const SavingAmount = useCallback ((amount: number) => {
     setSavingAmount(amount);
-  };
-  const getTotalIncomeAmount = (amount: number) => {
+  },[]);
+
+  const getTotalIncomeAmount = useCallback((amount: number) => {
     setTotalIncomeAmount(amount);
-  };
-  const getTotalExpensesAmount = (amount: number) => {
+  },[]);
+
+  const getTotalExpensesAmount = useCallback((amount: number) => {
     setTotalExpensesAmount(amount);
-  };
+  },[]);
 
   return (
     <div>
