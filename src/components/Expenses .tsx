@@ -11,6 +11,7 @@ type ExpenseSource = {
 };
 type ExpensesProps = {
   onGetTotalExpensesAmount: (amount: number) => void;
+  totalIncomeAmount: number;
 };
 
 const Expenses = (props: ExpensesProps) => {
@@ -41,11 +42,15 @@ const Expenses = (props: ExpensesProps) => {
       toastError("The Negative numbers not allowed!!");
       return;
     }
-    const newExpenses = {
-      id: uuidv4(),
-      ...data,
-    };
-    setExpenses((prevExpenses) => [...prevExpenses, newExpenses]);
+    if (totalAmount + data.amount <= props.totalIncomeAmount) {
+      const newExpenses = {
+        id: uuidv4(),
+        ...data,
+      };
+      setExpenses((prevExpenses) => [...prevExpenses, newExpenses]);
+    }else{
+      toastError("Insufficient balance");
+    }
     reset();
   };
 

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
-import { ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Header from "../components/Header";
 import Income from "../components/Income ";
 import Expenses from "../components/Expenses ";
@@ -31,7 +31,10 @@ function BudgetApp() {
       <Header />
       <main className="container">
         <Income onGetTotalIncomeAmount={getTotalIncomeAmount} />
-        <Expenses onGetTotalExpensesAmount={getTotalExpensesAmount} />
+        <Expenses
+          onGetTotalExpensesAmount={getTotalExpensesAmount}
+          totalIncomeAmount={totalIncomeAmount}
+        />
         <Target SavingAmount={savingAmount} />
       </main>
       <Transfer
