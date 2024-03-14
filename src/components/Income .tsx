@@ -17,6 +17,7 @@ const Income = (props: IncomeProps) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IncomeSource>();
 
@@ -37,6 +38,7 @@ const Income = (props: IncomeProps) => {
       ...data,
     };
     setIncomes((prevIncome) => [...prevIncome, newIncome]);
+    reset();
   };
 
   // function delete Income

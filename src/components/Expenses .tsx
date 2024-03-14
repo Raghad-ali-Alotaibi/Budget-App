@@ -16,6 +16,7 @@ const Expenses = (props: ExpensesProps) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ExpenseSource>();
  
@@ -37,6 +38,7 @@ const Expenses = (props: ExpensesProps) => {
       ...data,
     };
     setExpenses((prevExpenses) => [...prevExpenses, newExpenses]);
+    reset();
   };
 
 
