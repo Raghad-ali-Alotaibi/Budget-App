@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { toastError } from "../components/Error";
 import { v4 as uuidv4 } from "uuid";
 
 type ExpenseSource = {
@@ -19,7 +20,7 @@ const Expenses = (props: ExpensesProps) => {
     reset,
     formState: { errors },
   } = useForm<ExpenseSource>();
- 
+
   const [expenses, setExpenses] = useState<ExpenseSource[]>([]);
 
   // total Amount
@@ -31,8 +32,15 @@ const Expenses = (props: ExpensesProps) => {
     props.onGetTotalExpensesAmount(totalAmount);
   }, [expenses, totalAmount, props]);
 
-
   const expenseSubmit: SubmitHandler<ExpenseSource> = (data) => {
+    if (data.source.length < 4) {
+      toastError("the minimum letter is 4 !!");
+      return;
+    }
+    if (data.amount < 0) {
+      toastError("The Negative numbers not allowed!!");
+      return;
+    }
     const newExpenses = {
       id: uuidv4(),
       ...data,
@@ -40,7 +48,6 @@ const Expenses = (props: ExpensesProps) => {
     setExpenses((prevExpenses) => [...prevExpenses, newExpenses]);
     reset();
   };
-
 
   // function delete expense
   const deleteExpense = (id: string) => {

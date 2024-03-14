@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { toastError } from "../components/Error";
 import { v4 as uuidv4 } from "uuid";
 
 type IncomeSource = {
@@ -33,6 +34,14 @@ const Income = (props: IncomeProps) => {
   }, [incomes, totalAmount, props]);
 
   const incomeSubmit: SubmitHandler<IncomeSource> = (data) => {
+    if (data.source.length < 4) {
+      toastError("the minimum letter is 4 !!");
+      return;
+    }
+    if (data.amount < 0) {
+      toastError("The Negative numbers not allowed!!");
+      return;
+    }
     const newIncome = {
       id: uuidv4(),
       ...data,
