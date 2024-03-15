@@ -4,7 +4,7 @@ import { toastError } from "../components/Error";
 import { v4 as uuidv4 } from "uuid";
 
 type ExpenseSource = {
-  id: string;
+  id?: string;
   source: string;
   amount: number;
   date: string;
@@ -49,7 +49,7 @@ const Expenses = (props: ExpensesProps) => {
       };
       setExpenses((prevExpenses) => [...prevExpenses, newExpenses]);
     }else{
-      toastError("Insufficient balance");
+      toastError("Insufficient balance!!");
     }
     reset();
   };
@@ -107,7 +107,7 @@ const Expenses = (props: ExpensesProps) => {
               {expense.source}: {expense.amount} EUR on {expense.date}
               <button
                 className="delete"
-                onClick={() => deleteExpense(expense.id)}
+                onClick={() => deleteExpense(expense.id ? expense.id : "")}
               >
                 delete
               </button>

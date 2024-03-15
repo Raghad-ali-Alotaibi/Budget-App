@@ -1,4 +1,6 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
+import { toastError } from "../components/Error";
+
 
 type TransferSavingAmount = {
   onGetSavingAmount: (amount: number) => void;
@@ -13,16 +15,15 @@ const Transfer = (props: TransferSavingAmount) => {
   const handleTransfer = (event: ChangeEvent<HTMLInputElement>) => {
     setAmount(Number(event.target.value));
   };
-
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    if (amount) {
+    if (amount <= props.totalIncomeAmount - props.totalExpensesAmount ) {
       totalSaving = totalSaving + amount;
       setTotalSaving(totalSaving);
       props.onGetSavingAmount(totalSaving);
       setAmount(0);
     } else {
-      console.log("something wrong with Transfer Saving Amount!!");
+      toastError("Insufficient balance for the transfer!!");
     }
   };
 

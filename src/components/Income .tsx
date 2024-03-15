@@ -4,7 +4,7 @@ import { toastError } from "../components/Error";
 import { v4 as uuidv4 } from "uuid";
 
 type IncomeSource = {
-  id: string;
+  id?: string;
   source: string;
   amount: number;
   date: string;
@@ -102,7 +102,7 @@ const Income = (props: IncomeProps) => {
               {income.source}: {income.amount} EUR on {income.date}
               <button
                 className="delete"
-                onClick={() => deleteIncome(income.id)}
+                onClick={() => deleteIncome(income.id?income.id : "")}
               >
                 delete
               </button>
