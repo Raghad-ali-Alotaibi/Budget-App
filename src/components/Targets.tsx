@@ -38,8 +38,8 @@ const Target = (props: { SavingAmount: number }) => {
         %{" "}
       </p>
       <progress
+        value={target ? Math.round((props.SavingAmount / target) * 100) : 0}
         max={100}
-        value={Math.round((props.SavingAmount / target) * 100)}
       />
     </div>
   );
